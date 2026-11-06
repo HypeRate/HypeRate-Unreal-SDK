@@ -38,7 +38,7 @@ builds.
 ## Technical information
 
 - Distribution method: Code Plugin
-- Intended engine support: Unreal Engine 5.4–5.8
+- Verified engine support: Unreal Engine 5.8
 - Modules: `HypeRate` (Runtime), `HypeRateEditor` (Editor)
 - Dependencies: Unreal Engine WebSockets, JSON, UMG, Slate
 - Network: outbound secure WebSocket to the configured HypeRate endpoint
