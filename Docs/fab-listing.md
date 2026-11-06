@@ -48,6 +48,26 @@ builds.
 - Third-party service: HypeRate API access and a WebSocket token are required
 - Third-party code/assets: none bundled
 
+## Tags and search keywords
+
+Recommended Fab tags and listing keywords:
+
+- Unreal Engine
+- Blueprint
+- C++
+- Code Plugin
+- Heart Rate
+- Biometrics
+- WebSocket
+- Gameplay
+- Fitness
+- Streaming
+- UI
+- Simulation
+- Realtime
+- Wearable
+- HypeRate
+
 ## Important disclosure
 
 The plugin itself is MIT-licensed. Access to the hosted HypeRate API is a
@@ -62,7 +82,8 @@ security, and appropriate credential handling in their experience.
 
 - 1920x1080 cover image, under 3 MB
 - 1920x1080 Blueprint setup screenshot
-- 1920x1080 live widget screenshot
-- 1920x1080 simulation and state screenshot
+- Editor setup screenshot: `Docs/images/hyperate-editor-setup.png`
+- Widget simulation screenshot: `Docs/images/heart-rate-widget-simulation.png`
+- 1920x1080 live wearable state screenshot
 - Optional short 1920x1080 demo video
 

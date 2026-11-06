@@ -9,6 +9,12 @@ channel, heartbeat, threading, or reconnect code. Use live BPM from Blueprints o
 C++ to drive UI, game difficulty, animation, lighting, audio, VFX, or interactive
 streaming experiences.
 
+![HypeRate heart-rate widget running with the built-in Unreal simulator](Docs/images/heart-rate-widget-simulation.png)
+
+The screenshot above is the native `HypeRate Heart Rate Widget` running in Unreal
+Engine 5.8.4. Its blue state badge makes it immediately clear that the displayed
+BPM comes from the built-in simulator rather than a live wearable.
+
 > **Preview:** The plugin includes a Blueprint-ready client component, typed
 > connection state, automatic reconnect, a no-device simulator, a native runtime
 > widget, local Editor setup, automation tests, and GitHub/Fab release tooling.
@@ -22,8 +28,18 @@ streaming experiences.
 - Runtime-only credential configuration for packaged games
 - Resting, Workout, Intense, and Custom simulation profiles
 - Native UMG/Slate BPM widget with connection state and history graph
-- Unreal Automation tests for protocol and simulation behavior
+- Unreal Automation tests for protocol, simulation, and widget behavior
 - One source tree for GitHub releases and Fab code-plugin packages
+
+## What can you build?
+
+| Experience | HypeRate signal | Example reaction |
+| --- | --- | --- |
+| Horror and suspense | Rising BPM | Increase tension, audio, fog, or enemy pressure |
+| Fitness and rhythm | Live BPM or zones | Adapt targets, tempo, scoring, and recovery phases |
+| Streaming interaction | Heart-rate events | Drive overlays, VFX, avatars, or audience challenges |
+| Accessibility research | State and BPM events | Prototype alternative input and feedback systems |
+| UI and telemetry | Current BPM and history | Show status, trends, warnings, or session summaries |
 
 ## Install from GitHub
 
@@ -54,6 +70,12 @@ your project.
 Editor test credentials use `EditorPerProjectUserSettings`, stay below the
 project's `Saved` directory, and are not packaged. Configure production
 credentials at runtime rather than embedding long-lived secrets in an asset.
+
+![HypeRate local Editor setup in Unreal Engine](Docs/images/hyperate-editor-setup.png)
+
+Only the endpoint has a default value. The token and Device/Session ID fields are
+intentionally empty in a fresh project and are stored as local per-user Editor
+settings when entered.
 
 ## Blueprint workflow
 
@@ -91,9 +113,12 @@ other widget, call `Set Client`, and add it to the viewport. It displays BPM,
 history, and red/yellow/green/blue status for offline, connecting, live, and
 simulation states.
 
+For a complete first test, including the exact Blueprint nodes and a live-data
+check, follow [Testing in Unreal Engine](Docs/testing-in-unreal.md).
+
 ## Requirements
 
-- Unreal Engine 5.4 or newer
+- Verified with Unreal Engine 5.8.4; the source targets Unreal Engine 5.4 or newer
 - A C++-capable project or a compatible precompiled plugin package
 - HypeRate API access and a WebSocket API token
 - The Device/Session ID shown by HypeRate
@@ -104,6 +129,7 @@ API availability and commercial terms depend on the project. See the
 ## Documentation
 
 - [Getting started](Docs/getting-started.md)
+- [Testing in Unreal Engine](Docs/testing-in-unreal.md)
 - [Blueprint and C++ API](Docs/api.md)
 - [Fab listing draft](Docs/fab-listing.md)
 - [Release process](RELEASING.md)

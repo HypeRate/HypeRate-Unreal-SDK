@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- Unreal Engine 5.4 or newer
+- Verified with Unreal Engine 5.8.4; the source targets Unreal Engine 5.4 or newer
 - HypeRate API access and a WebSocket API token
 - The Device/Session ID shown by HypeRate
 
@@ -20,6 +20,11 @@ Unreal Engine** is enabled.
 Open **Tools > HypeRate Setup** and enter the API token, Device/Session ID, and
 endpoint. These values are stored as per-user Editor settings under the
 project's `Saved` configuration, not in the plugin or packaged game.
+
+![HypeRate local Editor settings](images/hyperate-editor-setup.png)
+
+The token and Device/Session ID are empty by default. The endpoint normally stays
+at `wss://app.hyperate.io/socket/websocket`.
 
 Add a `HypeRate Client` component to an Actor. With **Connect On Begin Play**
 enabled, the component connects automatically in Play In Editor.
@@ -69,6 +74,17 @@ history graph. State colors are:
 | Yellow | Connecting, reconnecting, or disconnecting |
 | Blue | Simulation |
 | Red | Offline or error |
+
+![HypeRate runtime widget using the Workout simulation profile](images/heart-rate-widget-simulation.png)
+
+This image shows the native widget in the `Simulating` state. The same widget
+turns green after a live HypeRate connection is established.
+
+## Test the complete setup
+
+The [Testing in Unreal Engine](testing-in-unreal.md) guide walks through a safe
+simulation-first Blueprint test, the widget, live HypeRate data, Automation
+Tests, and common macOS toolchain issues.
 
 ## Connection lifecycle
 

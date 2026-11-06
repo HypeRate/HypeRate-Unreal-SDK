@@ -14,4 +14,12 @@ All notable changes to HypeRate for Unreal Engine are documented here.
 - Native UMG/Slate BPM widget with history graph and state colors.
 - Unreal Automation protocol and simulation tests.
 - GitHub validation plus source and Fab package release tooling.
+- Illustrated Editor setup and simulation screenshots.
+- Step-by-step Unreal testing guide for Blueprint, live data, widget, and
+  Automation Test verification.
+
+### Changed
+
+- Fresh Editor settings now leave the Device/Session ID empty instead of using
+  an internal development value.
 
