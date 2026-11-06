@@ -1,0 +1,23 @@
+# Unreal generated output
+Binaries/
+Builds/
+DerivedDataCache/
+Intermediate/
+Saved/
+
+# IDE and operating-system files
+.DS_Store
+.idea/
+.vs/
+.vscode/
+*.code-workspace
+*.sln
+*.suo
+*.user
+*.xcodeproj
+*.xcworkspace
+
+# Local credentials and packaged output
+Config/*EditorPerProjectUserSettings.ini
+*.zip
+

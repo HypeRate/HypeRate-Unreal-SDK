@@ -1,0 +1,25 @@
+name: Plugin integrity
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - "codex/**"
+    tags:
+      - "v*"
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate Unreal plugin
+        run: ./ReleaseTools/validate-plugin.sh
+

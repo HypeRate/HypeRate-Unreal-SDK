@@ -1,0 +1,29 @@
+{
+  "FileVersion": 3,
+  "Version": 100,
+  "VersionName": "1.0.0-pre.1",
+  "FriendlyName": "HypeRate for Unreal Engine",
+  "Description": "Receive live HypeRate heart-rate data in C++ and Blueprints with automatic Phoenix channel management, heartbeats, reconnects, simulation, and a runtime widget.",
+  "Category": "Gameplay",
+  "CreatedBy": "HypeRate",
+  "CreatedByURL": "https://hyperate.io",
+  "DocsURL": "https://github.com/HypeRate/HypeRate-Unreal-SDK/blob/main/Docs/getting-started.md",
+  "SupportURL": "https://help.hyperate.io",
+  "MarketplaceURL": "",
+  "CanContainContent": true,
+  "IsBetaVersion": true,
+  "Installed": false,
+  "Modules": [
+    {
+      "Name": "HypeRate",
+      "Type": "Runtime",
+      "LoadingPhase": "Default"
+    },
+    {
+      "Name": "HypeRateEditor",
+      "Type": "Editor",
+      "LoadingPhase": "Default"
+    }
+  ]
+}
+
