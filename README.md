@@ -19,6 +19,32 @@ BPM comes from the built-in simulator rather than a live wearable.
 > connection state, automatic reconnect, a no-device simulator, a native runtime
 > widget, local Editor setup, automation tests, and GitHub/Fab release tooling.
 
+## What can you build with it?
+
+Heart rate is just another real-time gameplay signal. Displaying BPM is the
+simplest use case, but the same value can drive almost any system in an Unreal
+level:
+
+| Area | Ideas |
+| --- | --- |
+| Dynamic difficulty | Increase enemy aggression, spawn rate, or encounter intensity as BPM rises. |
+| Horror and suspense | React to fear with lighting, fog, camera effects, audio layers, or enemy behaviour. |
+| Fitness and rhythm | Reward target heart-rate zones, synchronize movement, or alter music intensity. |
+| Abilities and mechanics | Charge skills, open timing windows, modify cooldowns, or trigger events at thresholds. |
+| Streaming and audience experiences | Show a live overlay or let biometric reactions influence a shared game session. |
+| World feedback | Drive material parameters, Niagara effects, animation speed, post-processing, or environmental colour. |
+
+```mermaid
+flowchart LR
+    A[Wearable] --> B[HypeRate]
+    B --> C[HypeRate for Unreal Engine]
+    C --> D[Blueprint events / C++ delegates]
+    D --> E[UI & overlays]
+    D --> F[Difficulty & game rules]
+    D --> G[Light, VFX & animation]
+    D --> H[Music & audio]
+```
+
 ## Features
 
 - `HypeRate Client` Actor Component for Blueprints and C++
@@ -30,16 +56,6 @@ BPM comes from the built-in simulator rather than a live wearable.
 - Native UMG/Slate BPM widget with connection state and history graph
 - Unreal Automation tests for protocol, simulation, and widget behavior
 - One source tree for GitHub releases and Fab code-plugin packages
-
-## What can you build?
-
-| Experience | HypeRate signal | Example reaction |
-| --- | --- | --- |
-| Horror and suspense | Rising BPM | Increase tension, audio, fog, or enemy pressure |
-| Fitness and rhythm | Live BPM or zones | Adapt targets, tempo, scoring, and recovery phases |
-| Streaming interaction | Heart-rate events | Drive overlays, VFX, avatars, or audience challenges |
-| Accessibility research | State and BPM events | Prototype alternative input and feedback systems |
-| UI and telemetry | Current BPM and history | Show status, trends, warnings, or session summaries |
 
 ## Install from GitHub
 
@@ -101,6 +117,36 @@ Add `HypeRate` to the consuming module's dependency list:
 ```csharp
 PublicDependencyModuleNames.Add("HypeRate");
 ```
+
+## Turn BPM into gameplay
+
+Convert the current heart rate into a normalized `0..1` intensity and reuse that
+value throughout the game. In Blueprint, connect **On Heart Rate Changed** to a
+**Map Range Clamped** node with an input range such as `60..160` and an output
+range of `0..1`. The result can drive light intensity, audio pitch, Niagara or
+material parameters, animation, an enemy director, spawn systems, or custom game
+state logic.
+
+The same mapping in C++ looks like this:
+
+```cpp
+void AMyGameplayActor::HandleHeartRate(const int32 HeartRate)
+{
+    const float Intensity = FMath::GetMappedRangeValueClamped(
+        FVector2D(60.0f, 160.0f),
+        FVector2D(0.0f, 1.0f),
+        static_cast<float>(HeartRate));
+
+    SceneLight->SetIntensity(FMath::Lerp(1000.0f, 8000.0f, Intensity));
+    Music->SetPitchMultiplier(FMath::Lerp(0.9f, 1.2f, Intensity));
+    CharacterMaterial->SetScalarParameterValue(
+        TEXT("HeartRateIntensity"), Intensity);
+}
+```
+
+Bind this function to `OnHeartRateChanged` as shown in the C++ workflow above.
+Live and simulated BPM use the same delegate, so gameplay logic does not need a
+separate simulation path.
 
 ## Try it without a wearable
 

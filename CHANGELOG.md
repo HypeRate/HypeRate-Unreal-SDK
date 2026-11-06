@@ -17,6 +17,8 @@ All notable changes to HypeRate for Unreal Engine are documented here.
 - Illustrated Editor setup and simulation screenshots.
 - Step-by-step Unreal testing guide for Blueprint, live data, widget, and
   Automation Test verification.
+- Gameplay use cases, signal-flow diagram, and Blueprint/C++ BPM-to-intensity
+  example in the GitHub documentation.
 
 ### Changed
 
